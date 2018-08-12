@@ -10,6 +10,7 @@
                     <div class="view">
                         <input class="toggle" type="checkbox" v-model="todo.completed" />
                         <label>{{ todo.title }}</label>
+                        <button class="destroy" @click="removeTodo(index)"></button>
                     </div>
                 </li>
             </ul>
@@ -33,6 +34,9 @@
           title: todo,
           completed: false
         });
+      },
+      removeTodo(index) {
+        this.todos.splice(index, 1);
       }
     }
   };
