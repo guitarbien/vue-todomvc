@@ -8,5 +8,8 @@ describe('Store', () => {
     const STORAGE_KEY = 'vue-todomvc';
     const expected = ['test'];
     localStorage.setItem(STORAGE_KEY, '["test"]');
+
+    // act
+    const actual = store.fetch();
   });
 });
