@@ -50,6 +50,18 @@ module.exports = {
       .click('.todo-list > .todo:first-child > .view > .toggle')
       .assert.cssClassPresent('.todo-list > .todo:first-child', 'completed')
       .end();
-  }
+  },
+  '應可從列表上刪除待辦事項' (browser) {
+    const todo = 'This is new todo';
 
+    browser
+      .url(process.env.VUE_DEV_SERVER_URL)
+      .waitForElementVisible('#app', 5000)
+      .setValue('.new-todo', [todo, browser.Keys.ENTER])
+      .waitForElementVisible('.todo-list', 1000)
+      .moveToElement('.todo-list > .todo:first-child', 10, 10)
+      .click('.todo-list > .todo:first-child > .view > button.destroy')
+      .assert.elementCount('.todo', 0)
+      .end();
+  }
 };
