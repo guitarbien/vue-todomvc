@@ -38,5 +38,18 @@ module.exports = {
       .waitForElementVisible('#app', 5000)
       .assert.hidden('.main', 1000)
       .end();
+  },
+  '當完成待辦事項後應標記為已完成' (browser) {
+    const todo = 'This is new todo';
+
+    browser
+      .url(process.env.VUE_DEV_SERVER_URL)
+      .waitForElementVisible('#app', 5000)
+      .setValue('.new-todo', [todo, browser.Keys.ENTER])
+      .waitForElementVisible('.todo-list', 1000)
+      .click('.todo-list > .todo:first-child > .view > .toggle')
+      .assert.cssClassPresent('.todo-list > .todo:first-child', 'completed')
+      .end();
   }
+
 };
