@@ -11,5 +11,8 @@ describe('Store', () => {
 
     // act
     const actual = store.fetch();
+
+    // assert
+    actual.should.to.deep.equal(expected);
   });
 });
