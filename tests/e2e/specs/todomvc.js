@@ -31,5 +31,12 @@ module.exports = {
       .waitForElementVisible('.todo-list > .todo:first-child', 1000)
       .assert.containsText('.todo-list > .todo:first-child > .view > label', todo)
       .end();
+  },
+  '當沒有待辦事項時列表應該隱藏' (browser) {
+    browser
+      .url(process.env.VUE_DEV_SERVER_URL)
+      .waitForElementVisible('#app', 5000)
+      .assert.hidden('.main', 1000)
+      .end();
   }
 };
