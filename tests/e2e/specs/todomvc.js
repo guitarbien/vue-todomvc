@@ -20,5 +20,16 @@ module.exports = {
       .setValue('.new-todo', [todo, browser.Keys.ENTER])
       .assert.value('.new-todo', '')
       .end();
+  },
+  '建立新待辦事項後應該出現待辦事項列表' (browser) {
+    const todo = 'This is new todo';
+
+    browser
+      .url(process.env.VUE_DEV_SERVER_URL)
+      .waitForElementVisible('#app', 5000)
+      .setValue('.new-todo', [todo, browser.Keys.ENTER])
+      .waitForElementVisible('.todo-list > .todo:first-child', 1000)
+      .assert.containsText('.todo-list > .todo:first-child > .view > label', todo)
+      .end();
   }
-}
+};
