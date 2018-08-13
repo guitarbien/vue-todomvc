@@ -1,6 +1,6 @@
 const STORAGE_KEY = 'vue-todomvc';
 
-module.export = {
+module.exports = {
   fetch: function () {
     return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')
   }
