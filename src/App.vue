@@ -57,10 +57,8 @@
         this.todos.splice(index, 1);
       },
       removeCompletedTodos() {
-        this.todos.forEach((item, index) => {
-          if (item.completed === true) {
-            this.removeTodo(index);
-          }
+        this.todos = this.todos.filter((item) => {
+          return item.completed !== true
         });
       },
       changeSelect(input) {
